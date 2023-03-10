@@ -174,7 +174,8 @@ btn_add_path.pack(side=LEFT)
 #메시지 작성
 message = tk.Message(root, text="条件1．NACCSを起動し、ログインしておくこと。\
                      \n条件2．指定するフォルダーには、各MSX.txtファイル1個と、\
-                     \n          そのMSX.pdfファイル1個を同じファイル名で必ずペアにしておくこと\
+                     \n           そのMSX.pdfファイル1個を同じファイル名で必ずペアにしておくこと\
+                     条件3．NACCS設定で、送信をf12、添付ファイルの追加をf11に設定すること \
                      \n\r使用方法\n1．START_Check_filesで作業をするフォルダーのファイルペア状況を確認する。\
                      \t(ペアになっていない場合、エラーメッセージが出ます。)\
                      \n2．START_Send MSX Filesでフォルダー選択すると、自動的に作業が始まります。\
@@ -187,3 +188,4 @@ message.pack()
 
 
 root.mainloop()
+# pyinstaller -w -F --add-data '*.png;.' 5_add...............
