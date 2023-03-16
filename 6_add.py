@@ -4,7 +4,7 @@ import pyautogui
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
+
 
 def resource_path(relative_path):
     try:
@@ -56,31 +56,31 @@ def get_file_list(folder_path):
 def start_msx(file_list):
     active_window()
     for file_name in file_list:
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.hotkey("ctrl", "o")
-        time.sleep(1)
+        time.sleep(5)
         pyautogui.typewrite(file_name)
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(5)
         pyautogui.hotkey("f11")
-        time.sleep(1)
+        time.sleep(5)
         pyautogui.typewrite(file_name + ".pdf")
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.typewrite("AL")
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.hotkey("f12")
-        time.sleep(1)
+        time.sleep(5)
         pyautogui.hotkey("Alt", "f4")
         time.sleep(1)
         # pyautogui.hotkey("Alt", "f4")
         # time.sleep(1)
 
-    show_image()
+    messagebox.showinfo('COMPLETE', "完了しました。")
 
 
 def show_image():
@@ -102,12 +102,6 @@ def show_image():
     x = (image_window.winfo_screenwidth() // 2) - (width // 2)
     y = (image_window.winfo_screenheight() // 2) - (height // 2)
     image_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-
-# 이미지 로드
-img = Image.open(resource_path("pepe.png"))
-# 이미지를 Tkinter PhotoImage 객체로 변환
-photo = ImageTk.PhotoImage(img)
-
 
 
 # send msx 디렉토리 선택 -> 자동실행
@@ -150,7 +144,7 @@ def add_checkpath():
             messagebox.showerror('確認',f'{file_name}と同じファイル名のPDFファイルが存在しません。')
         else:
             messagebox.showinfo('確認', "ファイルのペアを確認しました。")
-
+    
 
 
 # 프레임1 생성
@@ -173,17 +167,17 @@ btn_add_path.pack()
 # btn_add_path.pack(side=LEFT)
 
 #메시지 작성
-message = tk.Message(root, text="条件1．NACCSを起動し、ログインして下さい。\
-                     \n条件2．フォルダーは、ドキュメントい以外に指定不可です。\
+message = tk.Message(root, text='条件1．NACCSを起動し、ログインして下さい。\
+                     \n条件2．フォルダーは、"ドキュメント"い以外に指定不可です。\
                      \n条件3．各MSX.txtファイル1個と、そのMSX.pdfファイル1個を　\
                      \n\t同じファイル名で必ずペアにして下さい。\
                      条件4．NACCS設定で、送信をf12、添付ファイルの追加をf11に設定して下さい。 \
-                     \n\r使用方法\n1．START_Check_filesで作業をするフォルダーのファイルペア状況を確認する。\
+                     \n\r使用方法\n1．START_Check_filesで作業をするフォルダーのファイルをチェック。\
                      \t(ペアになっていない場合、エラーメッセージが出ます。)\
                      \n2．START_Send MSX Filesでフォルダー選択すると、自動的に作業が始まります。\
                      3．完了\
                      \n\r\r        注意!！一度作業が始まると絶対に止まりません。注意してくだいさい\
-                     \n        注意!！COMPLETEメッセージが出るまでパソコンを操作しないでください。", width=550, font=("Meiryo UI", 11 ,"bold"))
+                     \n        注意!！COMPLETEメッセージが出るまでパソコンを操作しないでください。', width=550, font=("Meiryo UI", 11 ,"bold"))
 message.pack()
 
 
