@@ -56,58 +56,31 @@ def get_file_list(folder_path):
 def start_msx(file_list):
     active_window()
     for file_name in file_list:
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.hotkey("ctrl", "o")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.typewrite(file_name)
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.hotkey("f11")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.typewrite(file_name + ".pdf")
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(3)
         pyautogui.typewrite("AL")
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.press("enter")
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.hotkey("f12")
-        time.sleep(1)
+        time.sleep(5)
         pyautogui.hotkey("Alt", "f4")
-        time.sleep(1)
+        time.sleep(2)
         # pyautogui.hotkey("Alt", "f4")
         # time.sleep(1)
 
-    show_image()
-
-
-def show_image():
-    # 새로운 창 생성
-    image_window = Toplevel(root)
-    image_window.title("COMPLETE!")
-    image_window.attributes("-topmost", True)  # 새로운 창을 윈도우 중앙에 배치하기 전, 윈도우 프로그램 중 제일 앞으로 보냄
-    # 이미지 레이블 생성
-    image_label = Label(image_window, image=photo)
-    image_label.pack()
-
-        # 창의 크기 설정
-    image_window.geometry("320x320")
-
-    # 창을 윈도우 중앙에 배치
-    image_window.update_idletasks()
-    width = image_window.winfo_width()
-    height = image_window.winfo_height()
-    x = (image_window.winfo_screenwidth() // 2) - (width // 2)
-    y = (image_window.winfo_screenheight() // 2) - (height // 2)
-    image_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-
-# 이미지 로드
-img = Image.open(resource_path("pepe.png"))
-# 이미지를 Tkinter PhotoImage 객체로 변환
-photo = ImageTk.PhotoImage(img)
-
+    messagebox.showinfo('COMPLETE', "送信を完了しました。")
 
 
 # send msx 디렉토리 선택 -> 자동실행
@@ -148,8 +121,8 @@ def add_checkpath():
         # pdf 파일이 존재하지 않으면 경고 메시지 출력
         if f'{name_without_ext}.pdf' not in pdf_files:
             messagebox.showerror('確認',f'{file_name}と同じファイル名のPDFファイルが存在しません。')
-        else:
-            messagebox.showinfo('確認', "ファイルのペアを確認しました。")
+        
+    messagebox.showinfo('確認', "ファイルのペアを確認しました。")
 
 
 
@@ -182,8 +155,8 @@ message = tk.Message(root, text="条件1．NACCSを起動し、ログインし�
                      \t(ペアになっていない場合、エラーメッセージが出ます。)\
                      \n2．START_Send MSX Filesでフォルダー選択すると、自動的に作業が始まります。\
                      3．完了\
-                     \n\r\r        注意!！一度作業が始まると絶対に止まりません。注意してくだいさい\
-                     \n        注意!！COMPLETEメッセージが出るまでパソコンを操作しないでください。", width=550, font=("Meiryo UI", 11 ,"bold"))
+                     \n\r\r        注意!！COMPLETEメッセージが出るまでパソコンを操作しないでください。", width=550, font=("Meiryo UI", 11 ,"bold"))
+                     
 message.pack()
 
 
